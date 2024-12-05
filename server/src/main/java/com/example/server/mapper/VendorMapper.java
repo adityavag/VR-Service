@@ -31,4 +31,31 @@ public class VendorMapper {
         vendorDAO.setOpeningHours(vendorDTO.getOpeningHours());
         return vendorDAO;
     }
+    public static VendorDTO toVendorDTO(VendorDAO vendorDAO) {
+        if(vendorDAO == null) return null;
+        VendorDTO vendorDTO = new VendorDTO();
+        vendorDTO.setVendorKey(vendorDAO.getVendorKey());
+        vendorDTO.setVendorName(vendorDAO.getVendorName());
+        vendorDTO.setOwnerName(vendorDAO.getOwnerName());
+        vendorDTO.setOwnerPhoneNumber(vendorDAO.getOwnerPhoneNumber());
+        vendorDTO.setOwnerEmail(vendorDAO.getOwnerEmail());
+        vendorDTO.setContactPersonName(vendorDAO.getContactPersonName());
+        vendorDTO.setContactPersonPhoneNumber(vendorDAO.getContactPersonPhoneNumber());
+        vendorDTO.setGoogleMapsLocationLink(vendorDAO.getGoogleMapsLocationLink());
+        vendorDTO.setSeatingCapacity(vendorDAO.getSeatingCapacity());
+        vendorDTO.setParkingAvailable(vendorDAO.isParkingAvailable());
+        vendorDTO.setEVChargerAvailable(vendorDAO.isEVChargerAvailable());
+        vendorDTO.setWiFiAvailable(vendorDAO.isWiFiAvailable());
+        vendorDTO.setSmokingZoneAvailable(vendorDAO.isSmokingZoneAvailable());
+        vendorDTO.setPlayAreaForKidsAvailable(vendorDAO.isPlayAreaForKidsAvailable());
+        vendorDTO.setWashroomsAvailable(vendorDAO.isWashroomsAvailable());
+        vendorDTO.setTotalWashroomCount(vendorDAO.getTotalWashroomCount());
+        vendorDTO.setSeparateWashroomsAvailable(vendorDAO.isSeparateWashroomsAvailable());
+        vendorDTO.setFemaleWashroomCount(vendorDAO.getFemaleWashroomCount());
+        vendorDTO.setMaleWashroomCount(vendorDAO.getMaleWashroomCount());
+        vendorDTO.setVegOnly(vendorDAO.isVegOnly());
+        vendorDTO.setTwentyFourHourOpen(vendorDAO.isTwentyFourHourOpen());
+        vendorDTO.setOpeningHours(vendorDAO.getOpeningHours());
+        return vendorDTO;
+    }
 }
