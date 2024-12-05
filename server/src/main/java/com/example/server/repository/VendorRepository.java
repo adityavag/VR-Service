@@ -6,4 +6,5 @@ import com.example.server.dao.VendorDAO;
 
 public interface VendorRepository extends JpaRepository<VendorDAO, Long> {
 
+    VendorDAO findVendorByVendorKey(String vendorKey);
 }

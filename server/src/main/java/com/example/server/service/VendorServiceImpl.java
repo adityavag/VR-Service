@@ -12,6 +12,8 @@ import com.example.server.dto.VendorDTO;
 import com.example.server.mapper.VendorMapper;
 import com.example.server.repository.VendorRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class VendorServiceImpl implements VendorService {
     @Autowired
@@ -29,5 +31,19 @@ public class VendorServiceImpl implements VendorService {
     public List<VendorDTO> getAllVendors() {
         List<VendorDAO> vendorDAOs = vendorRepository.findAll();
         return vendorDAOs.stream().map(t -> VendorMapper.toVendorDTO(t)).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void deleteVendor(String vendorKey) {
+        VendorDAO vendor = vendorRepository.findVendorByVendorKey(vendorKey);
+        vendorRepository.deleteById(vendor.getVendorId());
+    }
+
+    @Override
+    public VendorDTO fetchSpecificVendor(String vendorKey) {
+        VendorDAO vendorDAO = vendorRepository.findVendorByVendorKey(vendorKey);
+        VendorDTO vendor = VendorMapper.toVendorDTO(vendorDAO);
+        return vendor;
     }
 }

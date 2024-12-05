@@ -9,4 +9,8 @@ public interface VendorService {
     VendorDTO registerVendor(VendorDTO vendor);
 
     List<VendorDTO> getAllVendors();
+
+    void deleteVendor(String vendorKey);
+
+    VendorDTO fetchSpecificVendor(String vendorKey);
 }
