@@ -2,6 +2,7 @@ package com.example.server.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class VendorDTO {
     private String ownerEmail;
     private String contactPersonName;
     private String contactPersonPhoneNumber;
+    @Lob
     private String googleMapsLocationLink;
     private int seatingCapacity;
     @JsonProperty("isParkingAvailable")

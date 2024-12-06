@@ -28,12 +28,13 @@ const VendorListing = () => {
     }
     return (
         <div className="bg-gray-100 min-h-screen p-6">
-            <div className="grid grid-cols-1 md:grid-cols-3">
-                {vendors.map((vendor) => {
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {vendors.map((vendor, index) => {
                     const facilitiesList = getFacilitiesList(vendor);
                     return(
                         <VendorCard
-                        key={vendor.vendorKey}
+                        key={index}
+                        uniqueKey={vendor.vendorKey}
                         vendorName={vendor.vendorName}
                         ownerName={vendor.ownerName}
                         ownerPhoneNumber={vendor.ownerPhoneNumber}

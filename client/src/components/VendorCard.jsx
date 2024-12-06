@@ -1,6 +1,12 @@
+import axios from "axios";
 import { Phone, User } from "lucide-react";
 
 const VendorCard = (props) => {
+    const deleteVendor = async (key) => {
+        // console.log(key);
+        await axios.delete(`http://localhost:8080/api/vendors/delete/${key}`);
+        window.location.reload();
+    }
     const facilities = props.facilities;
     return (
         <div className="bg-white p-4 rounded-md shadow-md space-y-1.5">
@@ -11,14 +17,15 @@ const VendorCard = (props) => {
             <div className="font-semibold">Contact Person's Details</div>
             <div className="flex gap-2"><User/>{props.contactPersonName}</div>
             <div className="flex gap-2"><Phone/>{props.contactPersonPhoneNumber}</div>
-            <div className="font-semibold">Facilities</div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {/* <div className="font-semibold">Facilities</div> */}
+            {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {facilities.map((facility, index) => (
                     <div key={index} className="bg-gray-200 text-black text-center rounded-full text-sm py-1.5">{facility}</div>
                 ))}
-            </div>
-            <div className="flex justify-end items-end">
-                <button className="bg-red-500 text-white py-1.5 px-3 rounded-md">Delete</button>
+            </div> */}
+            <div className="flex gap-2">
+                <button className="bg-blue-500 text-white py-1.5 px-3 w-[100px] rounded-md mt-6" onClick={() => console.log(props.uniqueKey)}>Edit</button>
+                <button className="bg-red-500 text-white py-1.5 px-3 w-[100px] rounded-md mt-6" onClick={() => deleteVendor(props.uniqueKey)}>Delete</button>
             </div>
         </div>
     )
