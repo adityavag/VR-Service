@@ -1,7 +1,13 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import VendorRegistration from "./pages/VendorRegistration";
+
 const App = () => {
   return(
-    <div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element = {<VendorRegistration/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
