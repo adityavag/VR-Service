@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BabyIcon, BatteryChargingIcon, CarrotIcon, CigaretteIcon, Clock, Flag, ParkingCircle, ParkingCircleIcon, PersonStanding, Toilet, ToiletIcon, UtensilsCrossedIcon, Wifi } from "lucide-react";
-
+import axios from "axios";
 const VendorRegistration = () => {
     const [formData, setFormData] = useState({
         vendorKey: "",
@@ -41,12 +41,26 @@ const VendorRegistration = () => {
         }));
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("http://localhost:8080/api/vendors/", formData, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            console.log(res.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="min-h-screen bg-gray-100 mx-auto p-6 md:p-10">
             <div className="bg-white rounded-md shadow-md p-8 md:w-3/4 mx-auto">
                 <center><UtensilsCrossedIcon /></center>
                 <div className="text-2xl font-semibold text-center mt-4">Register New Vendor</div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="grid w-full items-center gap-4">
                         {/* Vendor Key */}
                         <div className="flex flex-col space-y-1.5">
@@ -310,6 +324,11 @@ const VendorRegistration = () => {
                                     </div>
                                 )}
                             </div>)}
+                        <div className="flex justify-center mt-4">
+                            <button
+                                type="submit"
+                                className="text-white bg-black p-2 text-center rounded-md w-3/4">Register Vendor</button>
+                        </div>
                     </div>
                 </form>
             </div>
