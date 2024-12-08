@@ -46,4 +46,13 @@ public class VendorServiceImpl implements VendorService {
         VendorDTO vendor = VendorMapper.toVendorDTO(vendorDAO);
         return vendor;
     }
+
+    @Override
+    public VendorDTO updateVendor(String vendorKey, VendorDTO vendor) {
+        VendorDAO existingVendor = vendorRepository.findVendorByVendorKey(vendorKey);
+        deleteVendor(vendorKey);
+        existingVendor = VendorMapper.toVendorDAO(vendor);
+        vendorRepository.save(existingVendor);        
+        return vendor;
+    }
 }

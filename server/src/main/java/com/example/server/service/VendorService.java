@@ -13,4 +13,6 @@ public interface VendorService {
     void deleteVendor(String vendorKey);
 
     VendorDTO fetchSpecificVendor(String vendorKey);
+
+    VendorDTO updateVendor(String vendorKey, VendorDTO vendor);
 }
