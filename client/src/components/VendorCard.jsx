@@ -1,11 +1,17 @@
 import axios from "axios";
 import { Phone, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const VendorCard = (props) => {
+    const navigate = useNavigate();
     const deleteVendor = async (key) => {
         // console.log(key);
         await axios.delete(`http://localhost:8080/api/vendors/delete/${key}`);
         window.location.reload();
+    }
+
+    const updateVendor = async (key) => {
+        navigate(`/edit/${key}`);
     }
     const facilities = props.facilities;
     return (
@@ -24,7 +30,7 @@ const VendorCard = (props) => {
                 ))}
             </div> */}
             <div className="flex gap-2">
-                <button className="bg-blue-500 text-white py-1.5 px-3 w-[100px] rounded-md mt-6" onClick={() => console.log(props.uniqueKey)}>Edit</button>
+                <button className="bg-blue-500 text-white py-1.5 px-3 w-[100px] rounded-md mt-6" onClick={() => updateVendor(props.uniqueKey)}>Edit</button>
                 <button className="bg-red-500 text-white py-1.5 px-3 w-[100px] rounded-md mt-6" onClick={() => deleteVendor(props.uniqueKey)}>Delete</button>
             </div>
         </div>

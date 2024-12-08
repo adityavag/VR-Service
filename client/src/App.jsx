@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import VendorRegistration from "./pages/VendorRegistration";
 import VendorListing from "./pages/VendorListing";
+import VendorUpdate from "./pages/VendorUpdate";
 
 const App = () => {
   return(
@@ -8,6 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/" element = {<VendorListing/>} />
         <Route path="/register" element = {<VendorRegistration/>} />
+        <Route path="/edit/:vendorKey" element={<VendorUpdate/>}/>
       </Routes>
     </BrowserRouter>
   )
