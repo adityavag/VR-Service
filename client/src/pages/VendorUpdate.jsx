@@ -61,6 +61,7 @@ const VendorUpdate = () => {
 
         try {
             await axios.put(`http://localhost:8080/api/vendors/${vendorKey}`, formData)
+            alert('Vendor Updated Successfully');
             navigate('/');
         } catch (error) {
             console.log(error);

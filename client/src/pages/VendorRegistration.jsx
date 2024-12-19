@@ -50,6 +50,7 @@ const VendorRegistration = () => {
                     "Content-Type": "application/json",
                 }
             });
+            alert("Vendor Registered Successfully");
             console.log(res.data);
         } catch (error) {
             console.log(error);
@@ -162,6 +163,7 @@ const VendorRegistration = () => {
                                     id="seatingCapacity"
                                     className="p-2 border rounded-md"
                                     type="number"
+                                    min={0}
                                     required
                                     placeholder="Number of Seats Available"
                                     value={formData.seatingCapacity}
